@@ -11,7 +11,7 @@ def register_auth_routes(app):
         if request.method == "POST":
             email = request.form.get("email", "").strip().lower()
             password = request.form.get("password", "")
-            role = request.form.get("role", "ANALYST")
+
 
             if not strong_password(password):
                 flash("Parola: minim 8 caractere, o litera mare si o cifra.")
@@ -21,7 +21,7 @@ def register_auth_routes(app):
                 user = User(
                     email=email,
                     password_hash=generate_password_hash(password),
-                    role=role if role in ["ANALYST", "MANAGER"] else "ANALYST"
+                    role="ANALYST"
                 )
                 db.session.add(user)
                 db.session.add(AuditLog(action="REGISTER", message=f"User creat: {email}"))
