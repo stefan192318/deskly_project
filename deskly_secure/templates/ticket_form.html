@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>{% if ticket %}Edit ticket{% else %}New ticket{% endif %}</h1>
+<form method="POST">
+<input type="hidden" name="csrf_token" value="{{ csrf_token }}">
+<p>Title: <input name="title" value="{{ ticket.title if ticket else '' }}"></p>
+<p>Description: <textarea name="description">{{ ticket.description if ticket else '' }}</textarea></p>
+<p>Severity:
+<select name="severity"><option>LOW</option><option>MEDIUM</option><option>HIGH</option></select>
+</p>
+<p>Status:
+<select name="status"><option>OPEN</option><option>IN_PROGRESS</option><option>RESOLVED</option></select>
+</p>
+<button>Save</button>
+</form>
+{% endblock %}

